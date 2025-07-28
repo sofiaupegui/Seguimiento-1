@@ -1,0 +1,35 @@
+#Inicialmente me paro en la carpeta dispuesta para el seguimiento uno y corro el codigo para descragar mi archivo correspondiente solo utilizando liea de comandos
+wget ftp://ftp.ensembl.org/pub/current_gff3/apteryx_haastii/Apteryx_haastii.aptHaa1.114.gff3.gz
+
+#Luego vamos a descomprimir el archivo con el siguiente codigo
+gunzip Apteryx_haastii.aptHaa1.114.gff3.gz
+
+#Luego me quedara de esta manera el archivo
+Apteryx_haastii.aptHaa1.114.gff3 
+
+#Para averiguar cuantos feactures tiene el archivo corremos el siguiente codigo que nos permite contar el numero de lineas, excluyendo aquellas que comienzan con # pues estas representan comentarios
+grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | wc -l
+#grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #
+#Mientras que Â| wc -l me las cuenta
+
+#Para saber cuantas regiones de la secuencia (cromosomas) contiene el archivo corremos el siguiente codigo
+grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '$3 == "region"' | wc -l
+#Este codigo esta compuesto de grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #, porque son comentarios
+#Luego tiene | awk '$3 == "region"' ; el pipe para conectar los comandos y el awk para procesar texto. Este ultimo busca la columna 3 ($3), osea la columna que contiene el tipo de feature, y luego escoge las filas que contengan la palabra region ( == "region" ) en ese espacio
+#Finalmente | wc -l me cuenta las lineas que hacen match con estos requisitos
+
+#Para saber cuantos genes estan listados en el organismo corremos el siguiente codigo
+grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '$3 == "gene"' | wc -l
+#Este codigo esta compuesto de grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #, porque son comentarios
+#Luego tiene | awk '$3 == "gene"' ; el pipe para conectar los comandos y el awk para procesar texto. Este ultimo busca la columna 3 ($3), osea la que contiente el tipo de feature y busca las filas que en este espacio tengan escrito "gene"
+#Finalmente | wc -l me cuenta las lineas que hacen match con estos requisitos
+
+#Finalmente, para poder entregar el top 10 de tipo de features (columna 3) mas anotados en el genoma, corremos el siguiente codigo
+grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '{print $3}' | sort | uniq -c | sort -nr | head -10
+#Este codigo esta compuesto de grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #, porque son comentarios
+#Luego tiene | awk '{print $3}' ; el pipe para conectar los comandos y el awk '{print $3}' para que se tome en cuenta solo la columna 3, que habla del feature
+#Sort nos permite organizar la columna en orden alfabetico para que luego, uniq me muestre las categorias y el uniq -c , me muestre la cantidad de cosas en esa categoria
+#Luego sort -nr organiza esas categorias de mayor a menor repetidas, orden descendente
+#Finalmente head -10 nos imprime las primeras 10 categorias en la lista que creamos con las veces que se repiten
+
+
