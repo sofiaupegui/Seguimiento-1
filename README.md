@@ -14,28 +14,25 @@ seqid: chr1  source: GenBank   type: gene  start: 1000  end: 5000  score: .  str
 Según Data Zone (2024) Esta ave es la especie más grabnde de kiwi y es nativa de Nueva Zelanda. Vive en montañas boscosas y se alimenta de invertebrados, frutas caídas y diferentes hojas en el suelo. Su reproducción está basada en la puesta de un huevo e incubarlo por alrededor de 75 - 85 días (de los periodos de incubación más largos entre las aves). Estas aves no son migratorias y tienden a vivir al rededor de 11.5 años, si no mueren antes pues 94% de los polluelos no llegan a la madurez. 
 
 ## Sección 3:
-i. ¿Cuantos features contiene el archivo?
+**i. ¿Cuantos features contiene el archivo?**
 870888
 
-ii. ¿Cuantas regiones de la secuencia (cromosomas) contiene el archivo?
+**ii. ¿Cuantas regiones de la secuencia (cromosomas) contiene el archivo?**
 4183
 
-iii. ¿Cuántos genes están listados en el organismo?
-19261
-Otra manera de hacerlo: 
-16674 gene
-   2537 ncRNA_gene
-     50 pseudogene
-Donde el total tambien es 19261
-Pequeña explicación: 
-Gene:  Contienen las instrucciones necesarias para fabricar proteínas que ejecutan funciones en las células.
-ncARN (Gen de ARN no codificante): Genes que no generan proteínas, pero sí ARN funcional con roles estratégicos, como regular otros genes o ensamblar estructuras celulares.
-Pseudogén: Copias antiguas y no funcionales de genes activos, que ya no producen proteínas.
+**iii. ¿Cuántos genes están listados en el organismo?**
+19261  
+**Otra manera de hacerlo:**  
+16674 gene  
+   2537 ncRNA_gene  
+     50 pseudogene  
+**Donde el total tambien es 19261**  
+**Pequeña explicación:**   
+**Gene:**  Contienen las instrucciones necesarias para fabricar proteínas que ejecutan funciones en las células.  
+**ncARN (Gen de ARN no codificante):** Genes que no generan proteínas, pero sí ARN funcional con roles estratégicos, como regular otros genes o ensamblar estructuras celulares.  
+**Pseudogén:** Copias antiguas y no funcionales de genes activos, que ya no producen proteínas.  
 
-
-iv. ¿Cuál es el top 10 de tipo de features (columna 3) más anotados en el
-genoma?
-
+**iv. ¿Cuál es el top 10 de tipo de features (columna 3) más anotados en el genoma?**
  1. 337842 exon
  2. 329455 CDS
  3. 135966 biological_region
