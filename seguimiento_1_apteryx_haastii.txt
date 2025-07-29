@@ -20,7 +20,7 @@ grep "##sequence-region" Apteryx_haastii.aptHaa1.114.gff3 | wc -l
 #Para saber cuantos genes estan listados en el organismo corremos el siguiente codigo
 grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '$3 ~ /gene/' | wc -l
 #Este codigo esta compuesto de grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #, porque son comentarios
-#Luego tiene |  awk '$3 ~ /gene/' ; el pipe para conectar los comandos y el awk para procesar texto en tablas y campos. Este ultimo comando busca la columna 3 de la tabla ($3) y selecciona aquello que contenga la palabra gene. OJO! no exclusivamente gene sino cualquier frase en la columna 3 (la de type) con ella (ej: gene, pseudo_gene, tRNA_gene, etc.).
+#Luego tiene |  awk '$3 ~ /gene/' ; el pipe para conectar los comandos y el awk para procesar texto en tablas y campos. Este ultimo comando busca la columna 3 de la tabla ($3) y selecciona aquello que contenga la palabra gene. OJO! no exclusivamente gene sino cualquier frase en la columna 3 (la de type) con ella (ej: gene, pseudogene, tRNA_gene y ncRNA_gene).
 #Finalmente | wc -l me cuenta esas lineas que incluyen gene
 #Otra manera de hacerlo es con el código
 grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | cut -f3 | grep "gene" | sort | uniq -c | sort -r
