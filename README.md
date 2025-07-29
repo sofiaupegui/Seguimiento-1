@@ -21,7 +21,7 @@ ii. ¿Cuantas regiones de la secuencia (cromosomas) contiene el archivo?
 4183
 
 iii. ¿Cuántos genes están listados en el organismo?
-16674
+19261
 
 iv. ¿Cuál es el top 10 de tipo de features (columna 3) más anotados en el
 genoma?
