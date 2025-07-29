@@ -10,7 +10,7 @@ Apteryx_haastii.aptHaa1.114.gff3
 #Para averiguar cuantos feactures tiene el archivo corremos el siguiente codigo que nos permite contar el numero de lineas, excluyendo aquellas que comienzan con # pues estas representan comentarios
 grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | wc -l
 #grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #
-#Mientras que Â| wc -l me las cuenta
+#Mientras que | wc -l me las cuenta
 
 #Para saber cuantas regiones de la secuencia (cromosomas) contiene el archivo corremos el siguiente codigo
 grep "##sequence-region" Apteryx_haastii.aptHaa1.114.gff3 | wc -l
@@ -18,10 +18,13 @@ grep "##sequence-region" Apteryx_haastii.aptHaa1.114.gff3 | wc -l
 #Luego tiene | wc -l; el pipe para conectar los comandos y el wc -l para contar la cantidad de lineas
 
 #Para saber cuantos genes estan listados en el organismo corremos el siguiente codigo
-grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '$3 == "gene"' | wc -l
+grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '$3 ~ /gene/' | wc -l
 #Este codigo esta compuesto de grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #, porque son comentarios
-#Luego tiene | awk '$3 == "gene"' ; el pipe para conectar los comandos y el awk para procesar texto. Este ultimo busca la columna 3 ($3), osea la que contiente el tipo de feature y busca las filas que en este espacio tengan escrito "gene"
-#Finalmente | wc -l me cuenta las lineas que hacen match con estos requisitos
+#Luego tiene |  awk '$3 ~ /gene/' ; el pipe para conectar los comandos y el awk para procesar texto en tablas y campos. Este ultimo comando busca la columna 3 de la tabla ($3) y selecciona aquello que contenga la palabra gene. OJO! no exclusivamente gene sino cualquier frase en la columna 3 (la de type) con ella (ej: gene, pseudo_gene, tRNA_gene, etc.).
+#Finalmente | wc -l me cuenta esas lineas que incluyen gene
+#Otra manera de hacerlo es con el código
+grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | cut -f3 | grep "gene" | sort | uniq -c | sort -r
+#Donde después de quitarme los comentarios se utiliza cut -f3 (para que tome en cuenta solo la columna 3), grep "gene" (para que ahí busque las frases que digan gene, sean compuestas o no), sort (organícelas alfabéticamente), uniq -c luego me muestra la cantidad de veces que se repiten estas palabras / campos y, finalmente, sort -nr organiza esas categorias de mayor a menor repetidas, orden descendente.
 
 #Finalmente, para poder entregar el top 10 de tipo de features (columna 3) mas anotados en el genoma, corremos el siguiente codigo
 grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '{print $3}' | sort | uniq -c | sort -nr | head -10
