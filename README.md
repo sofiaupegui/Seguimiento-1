@@ -22,6 +22,16 @@ ii. ¿Cuantas regiones de la secuencia (cromosomas) contiene el archivo?
 
 iii. ¿Cuántos genes están listados en el organismo?
 19261
+Otra manera de hacerlo: 
+16674 gene
+   2537 ncRNA_gene
+     50 pseudogene
+Donde el total tambien es 19261
+Pequeña explicación: 
+Gene:  Contienen las instrucciones necesarias para fabricar proteínas que ejecutan funciones en las células.
+ncARN (Gen de ARN no codificante): Genes que no generan proteínas, pero sí ARN funcional con roles estratégicos, como regular otros genes o ensamblar estructuras celulares.
+Pseudogén: Copias antiguas y no funcionales de genes activos, que ya no producen proteínas.
+
 
 iv. ¿Cuál es el top 10 de tipo de features (columna 3) más anotados en el
 genoma?
