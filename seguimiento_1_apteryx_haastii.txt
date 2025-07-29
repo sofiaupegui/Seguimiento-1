@@ -10,13 +10,12 @@ Apteryx_haastii.aptHaa1.114.gff3
 #Para averiguar cuantos feactures tiene el archivo corremos el siguiente codigo que nos permite contar el numero de lineas, excluyendo aquellas que comienzan con # pues estas representan comentarios
 grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | wc -l
 #grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #
-#Mientras que Â| wc -l me las cuenta
+#Mientras que Ã‚| wc -l me las cuenta
 
 #Para saber cuantas regiones de la secuencia (cromosomas) contiene el archivo corremos el siguiente codigo
-grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '$3 == "region"' | wc -l
-#Este codigo esta compuesto de grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 excluye las lineas del archivo que comienzan con #, porque son comentarios
-#Luego tiene | awk '$3 == "region"' ; el pipe para conectar los comandos y el awk para procesar texto. Este ultimo busca la columna 3 ($3), osea la columna que contiene el tipo de feature, y luego escoge las filas que contengan la palabra region ( == "region" ) en ese espacio
-#Finalmente | wc -l me cuenta las lineas que hacen match con estos requisitos
+grep "##sequence-region" Apteryx_haastii.aptHaa1.114.gff3 | wc -l
+#Este codigo esta compuesto de grep "##sequence-region" Apteryx_haastii.aptHaa1.114.gff3, que toma las lineas que hacen match con esta linea
+#Luego tiene | wc -l; el pipe para conectar los comandos y el wc -l para contar la cantidad de lineas
 
 #Para saber cuantos genes estan listados en el organismo corremos el siguiente codigo
 grep -v "^#" Apteryx_haastii.aptHaa1.114.gff3 | awk '$3 == "gene"' | wc -l
